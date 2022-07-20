@@ -1,39 +1,37 @@
-
-
-▼
-
-▼
-
 #include "main.h"
 
 
 
+/**
 
+ * _puts_recursion - Prints a string followed by a new line
+
+ * @s: string
+
+ *
+
+ * Return: On success 1.
+
+ * On error, -1 is returned, and errno is set appropriately.
+
+ */
 
 void _puts_recursion(char *s)
-
+  
 {
   
-  // define your base case
-  
-  if(*s == '\0') // (check if you are at the end of the string)
+  if (*s == 0)
     
     {
       
-      _putchar('\n'); // print next line if end of string
+      _putchar('\n');
+      
+      return;
       
     }
   
-  else
-    
-    {
-      
-      _putchar(*s); // print the first character of the string
-      
-      _puts_recursion(++s);  // recursively print the rest of the characters
-      
-    }
+  _putchar(*s);
   
-
+  _puts_recursion(s + 1);
   
 }
