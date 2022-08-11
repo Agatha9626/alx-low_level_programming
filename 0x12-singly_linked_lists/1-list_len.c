@@ -2,88 +2,36 @@
 
 
 
-int _strlen_recursion(char *s);
-
-
-
 /**
 
- * add_node - adds a new node at the beginning of a list_t list.
+ * list_len - returns the number of elements in a linked list_t list.
 
- * @head: pointer to the first element of the list.
+ * @h: pointer to the list.
 
- * @str: string to set in the new node.
-
- * Return: address of the new element, or NULL if it failed
+ * Return: number of nodes.
 
  **/
 
-list_t *add_node(list_t **head, const char *str)
+size_t list_len(const list_t *h)
   
 {
   
-  list_t *new;
+  size_t cont = 0;
   
 
   
-  new = malloc(sizeof(list_t));
-  
-  if (new == NULL)
+  while (h)
     
     {
       
-      return (NULL);
+      cont++;
+      
+      h = h->next;
       
     }
   
 
   
-  new->str = strdup(str);
-  
-  if (!new->str)
-    
-    {
-      
-      free(new);
-      
-      return (NULL);
-      
-    }
-  
-  new->len = _strlen_recursion(new->str);
-  
-  new->next = *head;
-  
-  *head = new;
-  
-
-  
-  return (new);
-  
-}
-
-
-
-/**
-
- * _strlen_recursion - returns the length of a string.
-
- * @s: string.
-
- * Return: length of @s.
-
- */
-
-int _strlen_recursion(char *s)
-  
-{
-  
-  if (*s == 0)
-    
-    return (0);
-  
-  else
-    
-    return (1 + _strlen_recursion(s + 1));
+  return (cont);
   
 }
